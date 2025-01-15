@@ -1,0 +1,43 @@
+<footer class="site-footer" role="contentinfo">
+	<small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+	  {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Hello world"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "Primary menu",
+        "default": "footer",
+        "info": "This menu won't show dropdown items"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_two",
+        "label": "Additional menu",
+        "default": "main-menu",
+        "info": "This menu won't show dropdown items"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_newsletter_enable",
+        "label": "Show newsletter signup",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}
