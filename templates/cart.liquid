@@ -1,6 +1,32 @@
-{% comment %}
-  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
-{% endcomment %}
+{% form 'cart', cart %}
+  <h1>Cart Page</h1>
 
-{% section 'cart-template' %}
+  <div id="cart-items">
+    {% if cart.empty? %}
+      <p>Your cart is empty!</p>
+    {% else %}
+      {% for item in cart.items %}
+        <a href="{{ item.url }}" class="cart-item">
+          <img src="{{ item.image | image_url: width: 50}}" width="50px" height="50px" />
+        </a>
+          <p>{{ item.title }}</p>
+          <p>{{ item.final_line_price | money}}</p>
+          <input type="text" name="updates[{{ item.key }}]" value="{{ item.quantity }}" />
+          <a href="{{ item.url_to_remove }}">Remove</a>
+      {% endfor %}
+    {% endif %}
+  </div>
 
+  <hr />
+
+  <p>Total: {{ cart.total_price | money }}</p>
+
+  <button type="submit" name="update">
+    Update
+  </button>
+
+  <button type="submit" name="checkout">
+    Checkout
+  </button>
+
+{% endform %}
