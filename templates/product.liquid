@@ -1,4 +1,5 @@
 <h1>{{ product.title }}</h1>
+{{ product.images.first | product_img_url: 'large' | img_tag: product.title }}
 <p>{{  product.price | money }}</p>
 <div>
   <p>{{ product.description }}</p>
@@ -11,5 +12,5 @@
       <option value="{{ variant.id }}">{{ variant.title }}</option>
     {% endfor %}
   </select>
-  <button type="submit">Add to Cart</button>
+  <button type="submit">{{ "general.add_to_cart" | t }}</button>
 {% endform %}

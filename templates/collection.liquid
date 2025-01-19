@@ -1,0 +1,13 @@
+<h1>{{ collection.title }}</h1>
+
+{% paginate collections['frontpage'].products by 2 %}
+
+  {%  for product in collections['frontpage'].products %}
+    {% render 'product-item', product: product %}
+  {% endfor %}
+
+  <div id="pagination">
+    {{ paginate | default_pagination }}
+  </div>
+  
+{% endpaginate %}

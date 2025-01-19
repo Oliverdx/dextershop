@@ -1,0 +1,5 @@
+<a href="{{ product.url }}">
+  <img src="{{ product.featured_image | image_url: width: 300 }}" width="{{ product.image.width }}" height="{{  product.image.height }} }}" />
+  <p>{{- product.title | link_to: product.url }}</p>
+  <p>{{ product.price | money }}</p>
+</a>
